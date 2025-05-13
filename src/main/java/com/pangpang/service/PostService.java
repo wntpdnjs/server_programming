@@ -27,5 +27,11 @@ public class PostService {
         return postDAO.deletePost(postId);
     }
     
+    public List<Post> getPostsByAuthorName(String name) {
+        return postDAO.getPostsByAuthorName(name);
+    }
+
+
+    
     // 추가 메서드들
 } 

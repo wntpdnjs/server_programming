@@ -59,7 +59,12 @@ public class UserServlet extends HttpServlet {
             if (user != null) {
                 System.out.println("Login successful for: " + username);
                 request.getSession().setAttribute("user", user);
-                response.sendRedirect(request.getContextPath() + "/");
+                if ("admin".equalsIgnoreCase(user.getRole())) {
+                    response.sendRedirect(request.getContextPath() + "/admin");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/");
+                }
+
             } else {
                 System.out.println("Login failed for: " + username);
                 request.setAttribute("error", "로그인에 실패했습니다.");
